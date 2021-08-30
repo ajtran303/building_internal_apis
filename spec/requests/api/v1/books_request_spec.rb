@@ -97,12 +97,12 @@ describe 'Books API' do
     expect(book.title).to eq("Charlotte's Web")
   end
 
-  it "can destroy an book" do
+  it "can destroy a book" do
     book = create(:book)
 
     expect{ delete "/api/v1/books/#{book.id}" }.to change(Book, :count).by(-1)
 
-    expect(response).to be_success
+    expect(response).to be_successful
     expect{Book.find(book.id)}.to raise_error(ActiveRecord::RecordNotFound)
   end
 end
